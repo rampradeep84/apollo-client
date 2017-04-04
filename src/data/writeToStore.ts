@@ -73,7 +73,7 @@ export function writeQueryToStore({
 }): NormalizedCache {
   const queryDefinition: OperationDefinitionNode = getQueryDefinition(query);
   console.log("writeQueryToStore:", result);
-  (<any>window).cacheMap = null;
+  (<any>window).faApolloCacheMap = null;
 
   return writeSelectionSetToStore({
     dataId: 'ROOT_QUERY',
