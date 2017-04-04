@@ -72,6 +72,8 @@ export function writeQueryToStore({
   fragmentMap?: FragmentMap,
 }): NormalizedCache {
   const queryDefinition: OperationDefinitionNode = getQueryDefinition(query);
+  console.log("writeQueryToStore:", result);
+  (<any>window).cacheMap = null;
 
   return writeSelectionSetToStore({
     dataId: 'ROOT_QUERY',
@@ -112,6 +114,9 @@ export function writeResultToStore({
   // XXX TODO REFACTOR: this is a temporary workaround until query normalization is made to work with documents.
   const selectionSet = getOperationDefinition(document).selectionSet;
   const fragmentMap = createFragmentMap(getFragmentDefinitions(document));
+
+  console.log("writeResultToStore:", result);
+  (<any>window).faApolloCacheMap = null;
 
   return writeSelectionSetToStore({
     result,
